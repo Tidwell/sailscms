@@ -48,6 +48,9 @@ function ModelsDetailsCtrl($scope, $http, $routeParams, sharedService) {
 			var newObj = {};
 			for (var prop in $scope.model.schema[attr]) {
 				if (typeof $scope.model.schema[attr][prop] !== 'object') {
+					if (prop === 'type') {
+						$scope.model.schema[attr][prop] = $scope.model.schema[attr][prop].toUpperCase()
+					}
 					newObj[prop] = $scope.model.schema[attr][prop];
 				}
 			}
@@ -99,7 +102,11 @@ function ModelsDetailsCtrl($scope, $http, $routeParams, sharedService) {
 
 		/* adds a new property */
 		$scope.addProperty = function() {
-			$scope.attributes.push({});
+			$scope.attributes.push({type: 'STRING'});
+		};
+
+		$scope.removeProperty = function(idx) {
+			$scope.attributes.splice(idx, 1);
 		};
 
 		/* close buttons on error/saved (todo replace w angular-bootstrap) */
