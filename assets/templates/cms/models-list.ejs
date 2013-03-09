@@ -1,9 +1,9 @@
 <script id="template-models-list" type="template/html">
-<div class="hero-unit">
-	<h1>Existing Models</h1>
-	<p>Click on each to see additional information</p>
-</div>
-<div class="row">
+<div class="row span12">
+	<div class="hero-unit">
+		<h1>Existing Models</h1>
+		<p>Click on each to see additional information</p>
+	</div>
 	<ul class="unstyled">
 		<li ng-repeat="model in models">
 			<h2><a href="/cms/models/details/{{model.identity}}">{{model.globalId}}</a></h2>

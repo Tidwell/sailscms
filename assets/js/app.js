@@ -20,8 +20,8 @@ angular.module('sailsUI', ['sailsUI.filters', 'sailsUI.services', 'sailsUI.direc
 		controller: ModelsDetailsCtrl
 	});
 	$routeProvider.when('/cms/models/scaffold', {
-		template: $('#template-models-scaffold').html(),
-		controller: ModelsScaffoldCtrl
+		template: $('#template-models-details').html(),
+		controller: ModelsDetailsCtrl
 	});
 	$routeProvider.otherwise({
 		redirectTo: '/cms/index'
