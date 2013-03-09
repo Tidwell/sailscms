@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('sailsUI', ['sailsUI.filters', 'sailsUI.services', 'sailsUI.directives', 'sailsUI.sharedService'])
+angular.module('sailsUI', ['sailsUI.filters', 'sailsUI.services', 'sailsUI.directives', 'ngSanitize', 'sailsUI.sharedService'])
 	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider.when('/cms/index', {
 		template: $('#template-index').html(),
