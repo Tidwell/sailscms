@@ -15,13 +15,13 @@ module.exports = {
 		//	defaultValue: '555-555-5555'
 		// }
 		
-		name: {
+		username: {
 			type: 'STRING'
 		},
 
 
-		active: {
-			type: 'INTEGER'
+		password: {
+			type: 'STRING'
 		}
 	}
 

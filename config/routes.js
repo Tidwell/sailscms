@@ -24,13 +24,33 @@ module.exports.routes = {
 	'/': {
 		controller: 'home'
 	},
-	// To route the home page to the "index" action of the "home" controller:
-	'/cms/*' : {
-		controller	: 'cms'
+	'/cms/login': {
+		controller: 'cms',
+		action: 'login'
 	},
-
-	'/models' : {
+	'/cms/checkAuthenticated': {
+		controller: 'cms',
+		action: 'checkAuthenticated'
+	},
+	'/models': {
 		controller: 'models'
+	},
+	'/models/list': {
+		controller: 'models'
+	},
+	'/models/scaffold': {
+		controller: 'models',
+		action: 'scaffold'
+	},
+	//route everything that isn't defined in the cms controller to the index actions
+	//because we just want to serve the page and let angular piece together what it
+	//needs to render
+	'/cms*': {
+		controller: 'cms'
+	},
+	//route everything else to the pages controller
+	'/:unknownRoute': {
+		controller: 'pages'
 	}
 
 	// If you want to set up a route only for a particular HTTP method/verb

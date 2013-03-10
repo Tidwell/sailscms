@@ -1,9 +1,9 @@
 /*---------------------
-	:: Actions 
+	:: Datasource
 	-> model
 ---------------------*/
 module.exports = {
-	
+
 	attributes	: {
 
 		// Simple attribute:
@@ -14,6 +14,15 @@ module.exports = {
 		//	type: 'STRING',
 		//	defaultValue: '555-555-5555'
 		// }
+
+		route: {
+			type: 'STRING'
+		},
+
+
+		name: {
+			type: 'STRING'
+		}
 	}
 
 };

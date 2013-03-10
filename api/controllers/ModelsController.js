@@ -3,17 +3,10 @@
 	-> controller
 ---------------------*/
 var ModelsController = {
+	// To trigger this action locally, visit: `http://localhost:port/models
 	index: function(req, res) {
 		res.json(sails.models);
 	},
-	// To trigger this action locally, visit: `http://localhost:port/models/list`
-	list: function(req, res) {
-
-		// This will render the view: /www/sails-ui/views/models/list.ejs
-		res.json(sails.models);
-
-	},
-
 	// To trigger this action locally, visit: `http://localhost:port/models/scaffold`
 	scaffold: function(req, res) {
 		var exec = require('child_process').exec;

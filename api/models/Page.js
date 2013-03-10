@@ -1,5 +1,5 @@
 /*---------------------
-	:: Qwe
+	:: Page
 	-> model
 ---------------------*/
 module.exports = {
@@ -15,13 +15,13 @@ module.exports = {
 		//	defaultValue: '555-555-5555'
 		// }
 		
-		test: {
-			type: 'TEST'
+		url: {
+			type: 'STRING'
 		},
 
 
-		t2: {
-			type: 'T'
+		title: {
+			type: 'STRING'
 		}
 	}
 
