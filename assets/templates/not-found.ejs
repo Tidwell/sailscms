@@ -22,16 +22,18 @@
 					<span class="inlineEdit" ng-bind-html="page.title" ng-model="page.title" contentEditable="true" placeholder="pageName"></span>
 				</h1>
 				<hr />
-				<!-- create/update page buttons -->
-			   	<div class="control-group">
-				    <button type="submit" class="btn" ng-click="updatePage()" ng-show="!page">Create Page</button>
-				    <button type="submit" class="btn" ng-click="updatePage()" ng-show="page">Update Page</button>
-				</div>
 			</form>
 			<h1 ng-show="page && !authenticated">{{page.title}}</h1>
 		  </div>
 	  </div>
       <div ng-show="page">
-{{page.title}}
+		{{page.title}}
 	  </div>
+	  <form class="form-horizontal" ng-show="authenticated">
+		  	<!-- create/update page buttons -->
+		   	<div class="control-group">
+			    <button type="submit" class="btn" ng-click="updatePage()" ng-show="!page">Create Page</button>
+			    <button type="submit" class="btn" ng-click="updatePage()" ng-show="page">Update Page</button>
+			</div>
+	  </form>
 </script>

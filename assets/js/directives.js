@@ -55,6 +55,7 @@ angular.module('sailsUI.directives', [])
 					elm.text(value);
 				};
 
+				//pretty sure a lot of above can be replaced with stuff inside this $watch
 				scope.$watch(attrs.ngModel, function(newv){
 					if (newv && newv !== elm.attr('placeholder')) {
 						elm.text(newv);
