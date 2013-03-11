@@ -13,7 +13,6 @@ angular.module('sailsUI.directives', [])
 		return {
 			require: 'ngModel',
 			link: function(scope, elm, attrs, ctrl) {
-				//console.log('call',arguments)
 				// view -> model
 				elm.bind('blur', function() {
 					scope.$apply(function() {
@@ -35,7 +34,7 @@ angular.module('sailsUI.directives', [])
 
 					else if (elm.html() === elm.attr('placeholder')) {
 						elm.removeClass('placeHolder');
-						if (e.type === 'focus' && !scope.$eval(attrs.ngModel)) {
+						if (e && e.type === 'focus' && !scope.$eval(attrs.ngModel)) {
 							elm.empty();
 						}
 					}
@@ -55,6 +54,13 @@ angular.module('sailsUI.directives', [])
 				ctrl.render = function(value) {
 					elm.text(value);
 				};
+
+				scope.$watch(attrs.ngModel, function(newv){
+					if (newv && newv !== elm.attr('placeholder')) {
+						elm.text(newv);
+						elm.removeClass('placeHolder');
+					}
+				});
 
 				// load init value from model
 				elm.text(scope.$eval(attrs.ngModel));

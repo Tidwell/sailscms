@@ -1,10 +1,37 @@
 <script id="template-not-found" type="text/template">
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>404 NOT FOUND</h1>
-        <p>We couldn't find this page.</p>
-      </div>
-      <div ng-show="authenticated">
-      	Create
-      </div>
+      <div>
+	      <div class="hero-unit">
+	        <div ng-show="!page">
+		        <h1>404 NOT FOUND</h1>
+		        <p>We couldn't find this page.</p>
+	            <p ng-show="authenticated">Would you like to create it?</p>
+		    </div>
+	      	<form class="form-horizontal" ng-show="authenticated">
+				<!-- error and success messages -->
+				<div class="alert alert-success" ng-show="saved">
+				  <button type="button" class="close" ng-click="clearSaved()">&times;</button>
+				  <strong>Success!</strong> Your page has been updated.
+				</div>
+				<div class="alert alert-error" ng-show="error">
+				  <button type="button" class="close" ng-click="clearError()">&times;</button>
+				  <strong>Error!</strong> {{error}}
+				</div>
+				<!-- title editing -->
+				<h1>
+					<i class="icon-edit"></i>
+					<span class="inlineEdit" ng-bind-html="page.title" ng-model="page.title" contentEditable="true" placeholder="pageName"></span>
+				</h1>
+				<hr />
+				<!-- create/update page buttons -->
+			   	<div class="control-group">
+				    <button type="submit" class="btn" ng-click="updatePage()" ng-show="!page">Create Page</button>
+				    <button type="submit" class="btn" ng-click="updatePage()" ng-show="page">Update Page</button>
+				</div>
+			</form>
+			<h1 ng-show="page && !authenticated">{{page.title}}</h1>
+		  </div>
+	  </div>
+      <div ng-show="page">
+{{page.title}}
+	  </div>
 </script>
