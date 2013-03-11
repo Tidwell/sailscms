@@ -16,7 +16,8 @@
 	    <tr ng-repeat="row in data">
 
 	      <td ng-repeat="attr in attributes">
-	      	{{row[attr._key]}}
+	      	<span ng-show="attr.type == 'DATE'">{{ dateFormat(row[attr._key]) }}</span>
+	      	<span ng-show="attr.type != 'DATE'">{{ row[attr._key] }}</span>
 	      </td>
 	    </tr>
 	  </tbody>
