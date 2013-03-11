@@ -24,7 +24,7 @@
           <a class="brand" href="/">CMS Bounty |</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li ng-class="navClass('index')"><a href="/index">Home</a></li>
               <li ng-show="authenticated"><a href="/cms" ng-click="cmsRedirect()">CMS</a></li>
             </ul>
             <p class="navbar-text pull-right" ng-show="authenticated">
