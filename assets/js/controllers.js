@@ -30,8 +30,15 @@ function DataListCtrl($scope,$http) {
 	});
 }
 
-function NotFoundCtrl($scope,$http) {
-
+function NotFoundCtrl($scope,$http,sharedService,authService) {
+	//onload check auth state
+	$scope.authenticated = authService.getAuth();
+	//when login action happens we detect it
+	$scope.$on('handleBroadcast', function() {
+		if (sharedService.message === 'loggedIn') {
+			$scope.authenticated = authService.getAuth();
+		}
+	});
 }
 
 function ModelsListCtrl($scope, $http) {
@@ -163,7 +170,7 @@ function ModelsViewCtrl($scope, $http, $routeParams, sharedService) {
 	});
 }
 
-function NavCtrl($scope, $http, $location, sharedService) {
+function NavCtrl($scope, $http, $location, sharedService, authService) {
 	$scope.navClass = function(page, opt) {
 		var currentRoute = $location.path().substring(1) || 'index';
 		if (opt === 'contains') {
@@ -191,8 +198,9 @@ function NavCtrl($scope, $http, $location, sharedService) {
 			}
 		}).then(function(res) {
 			if (res.data.success) {
-				$scope.authenticated = true;
+				$scope.authenticated = authService.setAuth(true);
 				$scope.user = res.data.user;
+				sharedService.prepForBroadcast('loggedIn');
 			} else {
 				$scope.error = res.data.error;
 			}
@@ -213,8 +221,9 @@ function NavCtrl($scope, $http, $location, sharedService) {
 		url: "/cms/checkAuthenticated"
 	}).then(function(res) {
 		if (res.data.success) {
-			$scope.authenticated = true;
+			$scope.authenticated = authService.setAuth(true);
 			$scope.user = res.data.user;
+			sharedService.prepForBroadcast('loggedIn');
 		}
 	});
 }
