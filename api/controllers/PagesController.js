@@ -7,7 +7,7 @@ var PagesController = {
 		console.log(req.param('unknownRoute'),'route');
 		Page.find({url: req.param('unknownRoute')}).done(function(err,route){
 			if (err || !route) {
-				res.send(req.param('unknownRoute'));
+				res.view('home/index');
 			}
 			else {
 				res.send(route);

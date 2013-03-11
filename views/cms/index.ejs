@@ -2,7 +2,7 @@
 <html lang="en" ng-app="sailsUI">
   <head>
     <meta charset="utf-8">
-    <title>CMSCaptian</title>
+    <title>CMS Bounty</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -41,7 +41,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="/" ng-click="frontendRedirect()">CMSCaptian</a>
+          <a class="brand" href="/" ng-click="frontendRedirect()">CMS Bounty</a>
           <p class="navbar-text pull-right" ng-show="authenticated">
               Logged in as <a href="#" class="navbar-link">{{user.username}}</a>
             </p>
@@ -51,7 +51,8 @@
             </p>
             <ul class="nav">
               <li ng-class="navClass('cms/index')"><a href="/cms/index">CMS</a></li>
-              <li ng-class="navClass('cms/models','contains')"><a href="/cms/models">Models</a></li>
+              <li ng-class="navClass('cms/data','contains')"><a href="/cms/data/view">Data</a></li>
+              <li ng-class="navClass('cms/models','contains')"><a href="/cms/models/view">Models</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -64,8 +65,10 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list" ng-controller="NavCtrl">
               <li ng-class="navClass('cms/index')"><a href="/cms/index">Index</a></li>
-              <li class="nav-header" ng-class="navClass('cms/models')">Models</li>
-              <li ng-class="navClass('cms/models/list')"><a href="/cms/models/list">List</a></li>
+              <li class="nav-header">Data</li>
+              <li ng-class="navClass('cms/data','contains')"><a href="/cms/data/view">View</a></li>
+              <li class="nav-header">Models</li>
+              <li ng-class="navClass('cms/models/view','contains')"><a href="/cms/models/view">View</a></li>
               <li ng-class="navClass('cms/models/scaffold')"><a href="/cms/models/scaffold">Scaffold</a></li>
             </ul>
           </div><!--/.well -->
