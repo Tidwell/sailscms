@@ -1,0 +1,31 @@
+<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavCtrl">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="brand" href="/" ng-click="frontendRedirect()">CMS Bounty |</a>
+			<p class="navbar-text pull-right" ng-show="authenticated">
+				Logged in as
+				<a href="#" class="navbar-link">{{user.username}}</a>
+			</p>
+			<div class="nav-collapse collapse">
+				<p class="navbar-text pull-right" ng-show="pendingChanges">You have pending changes that require a server restart.</p>
+				<ul class="nav">
+					<li ng-class="navClass('cms/index')">
+						<a href="/cms/index">CMS</a>
+					</li>
+					<li ng-class="navClass('cms/data','contains')">
+						<a href="/cms/data/view">Data</a>
+					</li>
+					<li ng-class="navClass('cms/models','contains')">
+						<a href="/cms/models/view">Models</a>
+					</li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+</div>
