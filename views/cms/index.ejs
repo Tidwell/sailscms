@@ -1,114 +1,122 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="sailsUI">
-  <head>
-    <meta charset="utf-8">
-    <title>CMS Bounty</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<head>
+		<meta charset="utf-8">
+		<title>CMS Bounty</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<link href="/assets/styles/bootstrap.min.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				padding-top: 60px;
+				padding-bottom: 40px;
+			}
+			.sidebar-nav {
+				padding: 9px 0;
+			}
+
+			@media (max-width: 980px) {
+				/* Enable use of floated navbar text */
+				.navbar-text.pull-right {
+					float: none;
+					padding-left: 5px;
+					padding-right: 5px;
+				}
+			}
+		</style>
+		<link href="/assets/styles/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="/assets/styles/app.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavCtrl">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="brand" href="/" ng-click="frontendRedirect()">CMS Bounty |</a>
+					<p class="navbar-text pull-right" ng-show="authenticated">
+						Logged in as
+						<a href="#" class="navbar-link">{{user.username}}</a>
+					</p>
+					<div class="nav-collapse collapse">
+						<p class="navbar-text pull-right" ng-show="pendingChanges">You have pending changes that require a server restart.</p>
+						<ul class="nav">
+							<li ng-class="navClass('cms/index')">
+								<a href="/cms/index">CMS</a>
+							</li>
+							<li ng-class="navClass('cms/data','contains')">
+								<a href="/cms/data/view">Data</a>
+							</li>
+							<li ng-class="navClass('cms/models','contains')">
+								<a href="/cms/models/view">Models</a>
+							</li>
+						</ul>
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3">
+					<div class="well sidebar-nav">
+						<ul class="nav nav-list" ng-controller="NavCtrl">
+							<li ng-class="navClass('cms/index')">
+								<a href="/cms/index">Index</a>
+							</li>
+							<li class="nav-header">Data</li>
+							<li ng-class="navClass('cms/data','contains')">
+								<a href="/cms/data/view">View</a>
+							</li>
+							<li class="nav-header">Models</li>
+							<li ng-class="navClass('cms/models/view','contains')">
+								<a href="/cms/models/view">View</a>
+							</li>
+							<li ng-class="navClass('cms/models/scaffold')">
+								<a href="/cms/models/scaffold">Scaffold</a>
+							</li>
+						</ul>
+					</div>
+					<!--/.well -->
+				</div>
+				<!--/span-->
+
+				<div ng-view class="span9"></div>
+			</div>
+			<!--/row-->
+			<hr>
+			<footer>
+				<p>&copy; Tidwell</p>
+			</footer>
+		</div>
+		<!--/.fluid-container-->
+
+		<!-- Templates from your view path are included here -->
+		<%- assets.templateLibrary() %>
+
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+
+		<%- assets.js() %>
 
 
-	<link href="/assets/styles/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-
-      @media (max-width: 980px) {
-        /* Enable use of floated navbar text */
-        .navbar-text.pull-right {
-          float: none;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-      }
-    </style>
-	<link href="/assets/styles/bootstrap-responsive.min.css" rel="stylesheet">
-  <link href="/assets/styles/app.css" rel="stylesheet" />
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavCtrl">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="/" ng-click="frontendRedirect()">CMS Bounty | </a>
-          <p class="navbar-text pull-right" ng-show="authenticated">
-              Logged in as <a href="#" class="navbar-link">{{user.username}}</a>
-            </p>
-          <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right" ng-show="pendingChanges">
-              You have pending changes that require a server restart.
-            </p>
-            <ul class="nav">
-              <li ng-class="navClass('cms/index')"><a href="/cms/index">CMS</a></li>
-              <li ng-class="navClass('cms/data','contains')"><a href="/cms/data/view">Data</a></li>
-              <li ng-class="navClass('cms/models','contains')"><a href="/cms/models/view">Models</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list" ng-controller="NavCtrl">
-              <li ng-class="navClass('cms/index')"><a href="/cms/index">Index</a></li>
-              <li class="nav-header">Data</li>
-              <li ng-class="navClass('cms/data','contains')"><a href="/cms/data/view">View</a></li>
-              <li class="nav-header">Models</li>
-              <li ng-class="navClass('cms/models/view','contains')"><a href="/cms/models/view">View</a></li>
-              <li ng-class="navClass('cms/models/scaffold')"><a href="/cms/models/scaffold">Scaffold</a></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-
-        <div ng-view class="span9">
-        </div>
-      </div><!--/row-->
-      <hr>
-      <footer>
-        <p>&copy; Tidwell</p>
-      </footer>
-    </div><!--/.fluid-container-->
-
-    <!-- Templates from your view path are included here -->
-    <%- assets.templateLibrary() %>
-
-    <script src="http://code.jquery.com/jquery.js"></script>
-
-    <script type="assets/js/bootstrap.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tab.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js"></script>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
-
-<script src="/assets/js/angular.sanitize.js"></script>
-    <script src="/assets/js/app.js"></script>
-	<script src="/assets/js/services.js"></script>
-	<script src="/assets/js/controllers.js"></script>
-	<script src="/assets/js/filters.js"></script>
-	<script src="/assets/js/directives.js"></script>
-  </body>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tab.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
+		<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js"></script>
+	</body>
 </html>
