@@ -32,7 +32,7 @@ angular.module('sailsUI.authService', [])
 		},
 		setAuth: function(value) {
 			isAuthed.authed = value;
-			return isAuthed;
+			return isAuthed.authed;
 		}
 	};
 });

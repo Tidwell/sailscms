@@ -32,6 +32,10 @@ module.exports.routes = {
 		controller: 'cms',
 		action: 'checkAuthenticated'
 	},
+	'/cms/logout': {
+		controller: 'cms',
+		action: 'logout'
+	},
 	'/models': {
 		controller: 'models'
 	},

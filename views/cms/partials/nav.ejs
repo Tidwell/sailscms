@@ -7,10 +7,7 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="brand" href="/" ng-click="frontendRedirect()">CMS Bounty |</a>
-			<p class="navbar-text pull-right" ng-show="authenticated">
-				Logged in as
-				<a href="#" class="navbar-link">{{user.username}}</a>
-			</p>
+			<%- partial('partials/login') %>
 			<div class="nav-collapse collapse">
 				<p class="navbar-text pull-right" ng-show="pendingChanges">You have pending changes that require a server restart.</p>
 				<ul class="nav">

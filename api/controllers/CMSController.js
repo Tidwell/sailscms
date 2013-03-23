@@ -38,6 +38,12 @@ var CMSController = {
 		}
 	},
 
+	logout: function(req,res) {
+		if (req.session.authenticated) { delete req.session.authenticated; }
+		if (req.session.user) { delete req.session.user; }
+		res.json({success: true});
+	},
+
 	checkAuthenticated: function(req,res) {
 		if (req.session.authenticated) {
 			res.send({
