@@ -1,12 +1,6 @@
 function NotFoundCtrl($scope,$http,$location,sharedService,authService) {
 	//onload check auth state
-	$scope.authenticated = authService.getAuth();
-	//when login action happens we detect it
-	$scope.$on('handleBroadcast', function() {
-		if (sharedService.message === 'loggedIn') {
-			$scope.authenticated = authService.getAuth();
-		}
-	});
+	$scope.auth = authService.checkAuth();
 
 
 	var d = { url: $location.$$path };

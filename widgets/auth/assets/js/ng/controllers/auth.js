@@ -7,7 +7,6 @@ function AuthCtrl($scope, $http, $location, sharedService, authService) {
 		error: null
 	};
 
-	SS = $scope;
 	//methods for the view
 	$scope.login = function() {
 		$scope.auth = authService.login($scope.username, $scope.password);
