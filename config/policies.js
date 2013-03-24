@@ -10,10 +10,7 @@ module.exports.policies = {
 
 	cms: {
 		// Apply the "authenticated" policy to all actions
-		'*': 'authenticated',
-		// For someAction, apply 'somePolicy' instead
-		login: true,
-		checkAuthenticated: true
+		'*': 'authenticated'
 	},
 	models: {
 		'*': 'authenticated'

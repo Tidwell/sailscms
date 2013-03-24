@@ -10,9 +10,10 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li ng-class="navClass('index')"><a href="/index">Home</a></li>
-          <li ng-show="authenticated"><a href="/cms" ng-click="cmsRedirect()">CMS</a></li>
+          <li ng-show="auth.authenticated"><a href="/cms" ng-click="cmsRedirect()">CMS</a></li>
         </ul>
-        <%- partial('partials/login') %>
+
+        <%- partial('../widgets/auth/views/partials/login') %>
 
       </div><!--/.nav-collapse -->
     </div>

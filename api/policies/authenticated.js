@@ -1,15 +1,4 @@
 /**
-* Allow any authenticated user.
+* Auto-generated policy stub for auth widget
 */
-module.exports = function (req,res,ok) {
-
-	// User is allowed, proceed to controller
-	if (req.session.authenticated) {
-		return ok();
-	}
-
-	// User is not allowed
-	else {
-		return res.redirect('/');
-	}
-};
+module.exports = require('../../widgets/auth/api/policies/authenticated');

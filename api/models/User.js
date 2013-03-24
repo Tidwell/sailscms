@@ -1,28 +1,4 @@
-/*---------------------
-	:: User
-	-> model
----------------------*/
-module.exports = {
-
-	attributes	: {
-
-		// Simple attribute:
-		// name: 'STRING',
-
-		// Or for more flexibility:
-		// phoneNumber: {
-		//	type: 'STRING',
-		//	defaultValue: '555-555-5555'
-		// }
-		
-		username: {
-			type: 'STRING'
-		},
-
-
-		password: {
-			type: 'STRING'
-		}
-	}
-
-};
+/**
+* Auto-generated model stub for auth widget
+*/
+module.exports = require('../../widgets/auth/api/models/User');

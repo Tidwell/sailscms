@@ -22,21 +22,6 @@ angular.module('sailsUI.sharedService', []).factory('sharedService', function($r
 	return sharedService;
 });
 
-angular.module('sailsUI.authService', [])
-	.service('authService', function() {
-	var isAuthed = {authed: false };
-
-	return {
-		getAuth: function() {
-			return isAuthed.authed;
-		},
-		setAuth: function(value) {
-			isAuthed.authed = value;
-			return isAuthed.authed;
-		}
-	};
-});
-
 angular.module('sailsUI.socket', [])
 	.service('socket', function($rootScope) {
 	var socket = io.connect('http://localhost:1337');

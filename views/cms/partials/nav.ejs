@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="brand" href="/" ng-click="frontendRedirect()">CMS Bounty |</a>
-			<%- partial('partials/login') %>
+
 			<div class="nav-collapse collapse">
 				<p class="navbar-text pull-right" ng-show="pendingChanges">You have pending changes that require a server restart.</p>
 				<ul class="nav">
@@ -22,6 +22,9 @@
 					</li>
 				</ul>
 			</div>
+
+			<%- partial('../widgets/auth/views/partials/login') %>
+
 			<!--/.nav-collapse -->
 		</div>
 	</div>
