@@ -36,3 +36,27 @@ angular.module('sailsUI.authService', [])
 		}
 	};
 });
+
+angular.module('sailsUI.socket', [])
+	.service('socket', function($rootScope) {
+	var socket = io.connect('http://localhost:1337');
+	return {
+		request: function(eventName, data, callback) {
+			socket.request(eventName, data, function() {
+				var args = arguments;
+				$rootScope.$apply(function() {
+					callback.apply(socket, args);
+				});
+			});
+		},
+		on: function(route,callback) {
+			socket.on('message',function(data){
+				if (data.uri === route) {
+					$rootScope.$apply(function() {
+						callback(data.data);
+					});
+				}
+			});
+		}
+	};
+});

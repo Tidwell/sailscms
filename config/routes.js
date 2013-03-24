@@ -20,21 +20,9 @@
 //       JSON API for the model which matches :controller.
 //   - if no view OR model exists, Sails will respond with a 404.
 //
-module.exports.routes = {
+var routes = {
 	'/': {
 		controller: 'home'
-	},
-	'/cms/login': {
-		controller: 'cms',
-		action: 'login'
-	},
-	'/cms/checkAuthenticated': {
-		controller: 'cms',
-		action: 'checkAuthenticated'
-	},
-	'/cms/logout': {
-		controller: 'cms',
-		action: 'logout'
 	},
 	'/models': {
 		controller: 'models'
@@ -97,3 +85,6 @@ module.exports.routes = {
 	}
 	*/
 };
+var widgetRoutes = require('../widgets/auth/config/routes').routes;
+var allRoutes = _.extend(widgetRoutes,routes);
+module.exports.routes = allRoutes;

@@ -16,6 +16,11 @@ function NavCtrl($scope, $http, $location, sharedService, authService) {
 		if (sharedService.message === 'registered') {
 			$scope.signIn();
 		}
+		if (sharedService.message === 'logout') {
+			if (window.location.href.indexOf('/cms') !== -1) {
+				$scope.frontendRedirect();
+			}
+		}
 	});
 
 	$scope.signIn = function() {
@@ -64,9 +69,6 @@ function NavCtrl($scope, $http, $location, sharedService, authService) {
 			if (res.data.success) {
 				$scope.authenticated = authService.setAuth(false);
 				$scope.user = null;
-				if (window.location.href.indexOf('/cms') !== -1) {
-					$scope.frontendRedirect();
-				}
 				sharedService.prepForBroadcast('logout');
 			}
 		});

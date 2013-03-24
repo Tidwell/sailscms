@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('sailsUI', ['sailsUI.filters', 'sailsUI.services', 'sailsUI.directives', 'ngSanitize', 'sailsUI.sharedService', 'sailsUI.authService'])
+angular.module('sailsUI', ['sailsUI.filters', 'sailsUI.services', 'sailsUI.directives', 'ngSanitize', 'sailsUI.sharedService', 'sailsUI.authService', 'sailsUI.socket'])
 	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 		//FRONTEND
 		$routeProvider.when('/', {
